@@ -1,3 +1,7 @@
+html {
+  overflow: hidden;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
@@ -65,7 +69,7 @@ li:hover {
   border: 1px solid white;
 }
 
-p {
+.wrapper p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -113,3 +117,134 @@ p {
   left: 145%;
   top: 20%;
 }
+
+.overlay {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(85, 2, 60, 1);
+  animation: slide-out 1.5s ease-in-out;
+  animation-delay: 4s;
+}
+
+.overlay p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 5rem;
+  transition: all 0.5s ease-in-out ;
+}
+
+.overlay .paint {
+  position: relative;
+  display: inline-block;
+  z-index: 99;
+  top: -350%;
+  height: 4000px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.overlay .paint:nth-child(1) {
+  width: 10%;
+  background-color: rgba(240, 46, 170, 1);
+  animation: drip 8s ease-in-out ;
+  animation-delay: 0.5s;
+}
+
+.overlay .paint:nth-child(2) {
+  width: 8%;
+  background-color: rgb(128, 120, 125);
+  animation: drip 8s ease-in-out ;
+  animation-delay: 1s;
+}
+
+.overlay .paint:nth-child(3) {
+  width: 9%;
+  background-color: rgb(8, 5, 7);
+  animation: drip 8s ease-in-out ;
+  animation-delay: 1.5s;
+}
+
+.overlay .paint:nth-child(4) {
+  width: 5%;
+  background-color: rgba(214, 75, 163, 1);
+  animation: drip 8s ease-in-out ;
+  animation-delay: .5s;
+}
+
+.overlay .paint:nth-child(5) {
+  width: 11%;
+  background-color: rgba(17, 16, 17, 1);
+  animation: drip 8s ease-in-out ;
+  animation-delay: 1s;
+}
+
+.overlay .paint:nth-child(6) {
+  width: 7%;
+  background-color: rgb(197, 184, 192);
+  animation: drip 8s ease-in-out ;
+  animation-delay: 1.2s;
+}
+
+.overlay .paint:nth-child(7) {
+  width: 10%;
+  background-color: rgba(240, 46, 170, 1);
+  animation: drip 8s ease-in-out ;
+  animation-delay: .5s;
+}
+
+.overlay .paint:nth-child(8) {
+  width: 11%;
+  background-color: rgba(22, 21, 22, 1);
+  animation: drip 8s ease-in-out ;
+  animation-delay: 1;
+}
+
+.overlay .paint:nth-child(9) {
+  width: 6%;
+  background-color: rgba(180, 173, 178, 1);
+  animation: drip 8s ease-in-out ;
+  animation-delay: .7s;
+}
+
+.overlay .paint:nth-child(10) {
+  width: 9%;
+  background-color: rgba(240, 46, 170, 1);
+  animation: drip 8s ease-in-out ;
+  animation-delay: 1s;
+}
+
+.overlay .paint:nth-child(11) {
+  width: 10%;
+  background-color: rgba(15, 13, 14, 1);
+  animation: drip 8s ease-in-out ;
+  animation-delay: .6s;
+}
+
+@keyframes drip {
+  0% {
+    top: -350%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+    display: none;
+  }
+}
+
+
+
