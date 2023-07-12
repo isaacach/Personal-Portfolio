@@ -1,0 +1,115 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-image: radial-gradient(circle at 100% 100%, rgb(73, 0, 73), black 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: whitesmoke;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 70px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  margin-right: 50px;
+}
+
+li {
+  cursor: pointer;
+  transition: color 0.1s ease;
+  font-size: 1.2rem;
+}
+
+li:hover {
+  color: rgb(173, 20, 173);
+}
+
+.wrapper {
+  position: relative;
+  height: 30%;
+  width: 20%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5%;
+  transition: all .5s ease;
+}
+
+.wrapper:hover {
+  background-color: rgba(100, 4, 109, 0.5);
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, 
+  rgba(240, 46, 170, 0.3) 10px 10px, 
+  rgba(240, 46, 170, 0.2) 15px 15px, 
+  rgba(240, 46, 170, 0.1) 20px 20px, 
+  rgba(240, 46, 170, 0.05) 25px 25px;
+  border: 1px solid white;
+}
+
+p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(85, 2, 60, 0.7);
+  height: 200px;
+  width: 160px;
+  border-radius: 8%;
+  transition: all 0.5s ease-in-out;
+}
+
+.wrapper:hover .shape:nth-child(1) {
+  opacity: 1;
+  left: -35%;
+  top: 0;
+}
+.wrapper:hover .shape:nth-child(2) {
+  opacity: 1;
+  left: 60%;
+  top: -30%
+}
+.wrapper:hover .shape:nth-child(3) {
+  opacity: 1;
+  left: -30%;
+  top: 125%;
+}
+.wrapper:hover .shape:nth-child(4) {
+  opacity: 1;
+  left: 120%;
+  top: 135%;
+}
+.wrapper:hover .shape:nth-child(5) {
+  opacity: 1;
+  left: 145%;
+  top: 20%;
+}
