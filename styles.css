@@ -213,6 +213,43 @@ img {
   letter-spacing: 2px;
   background-color: rgba(0, 0, 0, 0);
   border: 2px solid #d2ebcd;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.contact form button:hover {
+  background-color: #d2ebcd;
+  color: #13171d;
+}
+
+footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  background-color: #13171d;
+  color: #d2ebcd;
+}
+
+.footer-icon-wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50px;
+  width: 50px;
+  background-color: #f96d00;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+
+.footer-icon-wrapper img {
+  width: 90%;
 }
 
 .overlay {

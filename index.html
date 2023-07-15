@@ -6,6 +6,7 @@
   <title>Isaac Achenbach</title>
   <link rel="stylesheet" href="resets.css">
   <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
   <canvas id="canvas"></canvas>
@@ -39,14 +40,21 @@
     <h2><span>//</span> Contact me</h2>
     <div class="contact">
       <h3>Want to work with me or give feedback?</h3>
-      <form action="mailto:isaac.achenbach1@gmail.com">
-          <input id="name" name="name" placeholder="your name">
-          <input id="email" name="email" placeholder="your email">
-          <textarea id="subject" name="subject" placeholder="write your message" style="height:200px"></textarea>
-          <button>Submit</button>
-        </form>
-      </div>
+      <form id="contact-form">
+        <input type="hidden" name="contact_number">
+        <input id="name" name="name" placeholder="your name">
+        <input id="email" name="email" placeholder="your email">
+        <textarea id="subject" name="subject" placeholder="write your message" style="height:200px"></textarea>
+        <button>Submit</button>
+      </form>
+    </div>
   </div>
+  <footer>
+    <div class="footer-icon-wrapper">
+      <img src="images/MingcuteLargeArrowUpLine.svg" alt="logo">
+    </div>
+    <p>© 2023 Isaac Achenbach</p>
+  </footer>
   <div class="overlay">
     <div class="paint"></div>
     <div class="paint"></div>
@@ -63,5 +71,6 @@
   </div>
 <script src="index.js"></script>
 <script src="canvas.js"></script>
+<script src="email.js" type="module"></script>
 </body>
 </html>
