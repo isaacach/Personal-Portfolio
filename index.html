@@ -8,15 +8,44 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <canvas id="canvas"></canvas>
   <nav>
-    <h1><a href="/">isaac</a></h1>
     <ul>
-      <li class="about"><a href="/about">about</a></li>
-      <li class="contact"><a href="/contact">contact me</a></li>
+      <li class="home">home</li>
+      <li class="about">about</li>
       <li class="skills">skills</li>
+      <li class="contact">contact me</li>
     </ul>
   </nav>
-  <div class="container" id="root">
+  <div class="intro">
+    <p>Hello, I'm <span>isaac</span>.</p>
+    <p>I'm a full-stack web developer.</p>
+  </div>
+  <div class="container-about">
+    <h2><span>//</span> About</h2>
+    <div class="me">
+      <div class="img-wrapper">
+        <img src="images/me.jpg" alt="me">
+      </div>
+      <p>I'm a full-stack web developer with a passion for creating beautiful, responsive, and secure websites.  
+        I have just finished a 5 month intensive bootcamp at Codeup where I learned a good portion of my skills.
+        I am a lover of all things outdoors and I enjoy spending my free time hiking, camping, and fishing.  I am also 
+        a coffee and craft beer fanatic.  I am currently looking for a job as a web developer and I am excited to see 
+        where my career takes me.<br><span>Let's make amazing things happen!</span></p>
+    </div>
+  </div>
+  <div class="container-skills"></div>
+  <div class="container-contact">
+    <h2><span>//</span> Contact me</h2>
+    <div class="contact">
+      <h3>Want to work with me or give feedback?</h3>
+      <form action="mailto:isaac.achenbach1@gmail.com">
+          <input id="name" name="name" placeholder="your name">
+          <input id="email" name="email" placeholder="your email">
+          <textarea id="subject" name="subject" placeholder="write your message" style="height:200px"></textarea>
+          <button>Submit</button>
+        </form>
+      </div>
   </div>
   <div class="overlay">
     <div class="paint"></div>
@@ -33,5 +62,6 @@
     <p>Isaac Achenbach</p>
   </div>
 <script src="index.js"></script>
+<script src="canvas.js"></script>
 </body>
 </html>
