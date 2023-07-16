@@ -10,6 +10,14 @@ let skillsEl = document.querySelector('.container-skills');
 let projects = document.querySelector('.projects');
 let projectsEl = document.querySelector('.container-projects');
 let toTop = document.querySelector('.footer-icon-wrapper');
+let meBtn = document.querySelector('.me p span');
+
+meBtn.addEventListener('click', () => {
+  contactEl.scrollIntoView({
+    behavior: "smooth"
+  });
+});
+
 
 home.addEventListener('click', () => {
   scrollTo({

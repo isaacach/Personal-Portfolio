@@ -4,7 +4,7 @@ body {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background-color: #d2ebcd;
+  background: #222831;
 }
 
 ::-webkit-scrollbar {
@@ -30,28 +30,63 @@ body {
 
 nav {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: sticky;
   z-index: 10;
   top: 0;
   height: 65px;
-  align-items: center;
   background-color: #393e46;
   color: #d2ebcd;
-
-  /* border-bottom: 3px solid #d2ebcd; */
+  border-bottom: 3px solid #d2ebcd;
 }
 
-nav ul {
+nav ul:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+}
+
+.beer {
+  width: 50px;
+  margin-left: 30px;
+  animation: cheers-one 1s ease-in-out;
+  animation-play-state: paused;
+}
+
+.beer:hover {
+  cursor: pointer;
+  animation-play-state: running;
+}
+
+.beer:hover .cheers {
+  animation-play-state: running;
+}
+
+.cheers {
+  position: absolute;
+  left: -50px;
+  width: 50px;
+  transform: rotateY(180deg);
+  animation: cheers-two 1s ease-in-out .6s ;
+  animation-play-state: paused;
+}
+
+nav ul:last-child {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 0;
-  width: 100%;
+  gap: 90px;
   height: 100%;
+  margin-right: 50px;
   list-style: none;
 }
 
-nav li {
+nav ul:last-child li {
   text-align: center;
   cursor: pointer;
   transition: color 0.1s ease;
@@ -125,6 +160,7 @@ nav li:hover {
   width: 100vw;
   height: 1200px;
   color: #222831;
+  background-color: #d2ebcd;
   font-weight: 600;
 }
 
@@ -169,7 +205,7 @@ nav li:hover {
 
 .img-wrapper {
   position: relative;
-  z-index: -10;
+  z-index: 1;
   width: 500px;
   height: 500px;
   overflow: hidden;
@@ -281,6 +317,7 @@ nav li:hover {
   align-items: center;
   width: 100vw;
   height: 1200px;
+  background-color: #d2ebcd;
 }
 
 .container-projects h2 {
@@ -459,6 +496,20 @@ footer {
     bottom: 0px;
   }
   
+}
+
+@keyframes cheers-one {
+  50% {
+    transform: translateX(30px);
+    rotate: -20deg;
+  }
+}
+
+@keyframes cheers-two {
+  50% {
+    left: 0;
+    rotate: -15deg;
+  }
 }
 
 
