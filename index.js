@@ -11,6 +11,14 @@ let projects = document.querySelector('.projects');
 let projectsEl = document.querySelector('.container-projects');
 let toTop = document.querySelector('.footer-icon-wrapper');
 let meBtn = document.querySelector('.me p span');
+let cnv = document.querySelector('#canvas');
+let logo = document.querySelector('.logo');
+
+logo.addEventListener('click', () => {
+  cnv.scrollIntoView({
+    behavior: "smooth"
+  });
+});
 
 meBtn.addEventListener('click', () => {
   contactEl.scrollIntoView({
@@ -20,9 +28,7 @@ meBtn.addEventListener('click', () => {
 
 
 home.addEventListener('click', () => {
-  scrollTo({
-    top: 0, 
-    left: 0, 
+  cnv.scrollIntoView({
     behavior: "smooth"
   });
 });
@@ -34,9 +40,7 @@ about.addEventListener('click', () => {
 });
 
 toTop.addEventListener('click', () => {
-  scrollTo({
-    top: 0, 
-    left: 0, 
+  cnv.scrollIntoView({
     behavior: "smooth"
   });
 });
