@@ -1,126 +1,131 @@
 let w, h, loopId, id, canvas, ctx, particles;
 
-	let options = {
-		particleColor: "#f96d00",
-		lineColor: "rgb(113, 121, 126)",
-		particleAmount: 150,
-		defaultRadius: 2,
-		variantRadius: 2,
-		defaultSpeed: .18,
-		variantSpeed: .18,
-		linkRadius: 160
-	};
+let options = {
+  particleColor: "#f96d00",
+  lineColor: "rgb(113, 121, 126)",
+  particleAmount: Math.floor(window.innerWidth / 10),
+  defaultRadius: 3,
+  variantRadius: 1,
+  defaultSpeed: 0.18,
+  variantSpeed: 0,
+  linkRadius: 160,
+};
 
-	let rgb = options.lineColor.match(/\d+/g);
+canvas = document.getElementById("canvas");
+ctx = canvas.getContext("2d");
 
-	document.addEventListener("DOMContentLoaded", init);
+w = canvas.width = window.innerWidth;
+h = canvas.height = window.innerHeight;
 
-	function init() {
-		canvas = document.getElementById("canvas");
-		ctx = canvas.getContext("2d");
-		resizeReset();
-		initialiseElements();
-		startAnimation();
-	}
+window.addEventListener("resize", () => {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+  location.reload();
+});
 
-	function resizeReset() {
-		w = canvas.width = window.innerHeight;
-		h = canvas.height = window.innerHeight;
-	}
+document.addEventListener("DOMContentLoaded", init);
 
-	function initialiseElements() {
-		particles = [];
-		for (let i = 0; i < options.particleAmount; i++) {
-			particles.push(new Particle());
-		}
-	}
+function init() {
+  initialiseElements();
+  startAnimation();
+}
 
-	function startAnimation() {
-		loopId = requestAnimationFrame(animationLoop);
-	}
+let rgb = options.lineColor.match(/\d+/g);
 
-	function animationLoop() {
-		ctx.clearRect(0,0,w,h);
-		drawScene();
+function initialiseElements() {
+  particles = [];
+  for (let i = 0; i < options.particleAmount; i++) {
+    particles.push(new Particle());
+  }
+}
 
-		id = requestAnimationFrame(animationLoop);
-	}
+function startAnimation() {
+  loopId = requestAnimationFrame(animationLoop);
+}
 
-	function drawScene() {
-		drawLine();
-		drawParticle();
-	}
+function animationLoop() {
+  ctx.clearRect(0, 0, w, h);
+  drawScene();
 
-	function drawParticle() {
-		for (let i = 0; i < particles.length; i++) {
-			particles[i].update();
-			particles[i].draw();
-		}
-	}
+  id = requestAnimationFrame(animationLoop);
+}
 
-	function drawLine() {
-		for (let i = 0; i < particles.length; i++) {
-			linkPoints(particles[i], particles);
-		}
-	}
+function drawScene() {
+  drawLine();
+  drawParticle();
+}
 
-	function linkPoints(point, hubs) {
-		for (let i = 0; i < hubs.length; i++) {
-			let distance = checkDistance(point.x, point.y, hubs[i].x, hubs[i].y);
-			let opacity = 1 - distance / options.linkRadius;
-			if (opacity > 0) {
-				ctx.lineWidth = 0.5;
-				ctx.strokeStyle = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+opacity+')';
-				ctx.beginPath();
-				ctx.moveTo(point.x, point.y);
-				ctx.lineTo(hubs[i].x, hubs[i].y);
-				ctx.closePath();
-				ctx.stroke();
-			}
-		}
-	}
+function drawParticle() {
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].draw();
+  }
+}
 
-	function checkDistance(x1, y1, x2, y2) {
-		return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-	}
+function drawLine() {
+  for (let i = 0; i < particles.length; i++) {
+    linkPoints(particles[i], particles);
+  }
+}
 
-	Particle = function() {
-		let _this = this;
-		_this.x = Math.random() * w;
-		_this.y = Math.random() * h;
-		_this.color = options.particleColor;
-		_this.radius = options.defaultRadius + Math.random() * options.variantRadius;
-		_this.speed = options.defaultSpeed + Math.random() * options.variantSpeed;
-		_this.directionAngle = Math.floor(Math.random() * 360);
-		_this.vector = {
-			x: Math.cos(_this.directionAngle) * _this.speed,
-			y: Math.sin(_this.directionAngle) * _this.speed
-		}
+function linkPoints(point, hubs) {
+  for (let i = 0; i < hubs.length; i++) {
+    let distance = checkDistance(point.x, point.y, hubs[i].x, hubs[i].y);
+    let opacity = 1 - distance / options.linkRadius;
+    if (opacity > 0) {
+      ctx.lineWidth = 0.5;
+      ctx.strokeStyle =
+        "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + opacity + ")";
+      ctx.beginPath();
+      ctx.moveTo(point.x, point.y);
+      ctx.lineTo(hubs[i].x, hubs[i].y);
+      ctx.closePath();
+      ctx.stroke();
+    }
+  }
+}
 
-		_this.update = function() {
-			_this.border();
-			_this.x += _this.vector.x;
-			_this.y += _this.vector.y;
-		}
+function checkDistance(x1, y1, x2, y2) {
+  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+}
 
-		_this.border = function() {
-			if (_this.x >= w || _this.x <= 0) {
-				_this.vector.x *= -1;
-			}
-			if (_this.y >= h || _this.y <= 0) {
-				_this.vector.y *= -1;
-			}
-			if (_this.x > w) _this.x = w;
-			if (_this.y > h) _this.y = h;
-			if (_this.x < 0) _this.x = 0;
-			if (_this.y < 0) _this.y = 0;
-		}
+Particle = function () {
+  let _this = this;
+  _this.x = Math.random() * w;
+  _this.y = Math.random() * h;
+  _this.color = options.particleColor;
+  _this.radius = options.defaultRadius + Math.random() * options.variantRadius;
+  _this.speed = options.defaultSpeed + Math.random() * options.variantSpeed;
+  _this.directionAngle = Math.floor(Math.random() * 360);
+  _this.vector = {
+    x: Math.cos(_this.directionAngle) * _this.speed,
+    y: Math.sin(_this.directionAngle) * _this.speed,
+  };
 
-		_this.draw = function() {
-			ctx.beginPath();
-			ctx.arc(_this.x, _this.y, _this.radius, 0, Math.PI * 2);
-			ctx.closePath();
-			ctx.fillStyle = _this.color;
-			ctx.fill();
-		}
-	}
+  _this.update = function () {
+    _this.border();
+    _this.x += _this.vector.x;
+    _this.y += _this.vector.y;
+  };
+
+  _this.border = function () {
+    if (_this.x >= w || _this.x <= 0) {
+      _this.vector.x *= -1;
+    }
+    if (_this.y >= h || _this.y <= 0) {
+      _this.vector.y *= -1;
+    }
+    if (_this.x > w) _this.x = w;
+    if (_this.y > h) _this.y = h;
+    if (_this.x < 0) _this.x = 0;
+    if (_this.y < 0) _this.y = 0;
+  };
+
+  _this.draw = function () {
+    ctx.beginPath();
+    ctx.arc(_this.x, _this.y, _this.radius, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fillStyle = _this.color;
+    ctx.fill();
+  };
+};
